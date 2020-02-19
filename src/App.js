@@ -17,7 +17,7 @@ import APropos from './components/APropos';
 
 
 
-const store = createStore(reducer);
+//const store = createStore(reducer);
 
 export default class App extends React.Component {
   constructor(props) {
@@ -26,18 +26,18 @@ export default class App extends React.Component {
     this.state = {
       name: '',
     };
-    console.log('initial state', store.getState());
+    //console.log('initial state', store.getState());
 
   }
 
   render() {
     return (
-        <Provider store={store}>
+       // <Provider store={store}>
 
           <Router>
             <div>
               <nav>
-                <ul>
+                <ul id="nav">
                   <li>
                     <Link to="/">Accueil</Link>
                   </li>
@@ -62,7 +62,7 @@ export default class App extends React.Component {
               </Switch>
             </div>
           </Router>
-        </Provider>
+       // </Provider>
 
     );
   }
