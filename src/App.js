@@ -10,7 +10,7 @@ import {
     Link
 } from "react-router-dom";
 
-
+import Accueil from './components/Accueil'
 import SpeedClick from './components/SpeedClick';
 import Configuration from './components/Configuration';
 import APropos from './components/APropos';
@@ -18,27 +18,23 @@ import JungleClick from "./components/JungleClick";
 import RageColor from "./components/RageColor";
 
 
-//const store = createStore(reducer);
+const store = createStore(reducer);
 
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            name: '',
-        };
-        //console.log('initial state', store.getState());
-
     }
 
     render() {
         return (
-            // <Provider store={store}>
-
+          <Provider store={store}>
             <Router>
                 <div>
                     <nav>
                         <ul id="nav">
+                            <li className="navli">
+                                <Link to="/">Accueil</Link>
+                            </li>
                             <li className="navli">
                                 <Link to="/speedclick">Speed Click</Link>
                             </li>
@@ -57,6 +53,9 @@ export default class App extends React.Component {
                         </ul>
                     </nav>
                     <Switch>
+                        <Route exact path="/">
+                            <Accueil/>
+                        </Route>
                         <Route exact path="/speedclick">
                             <SpeedClick/>
                         </Route>
@@ -75,8 +74,7 @@ export default class App extends React.Component {
                     </Switch>
                 </div>
             </Router>
-            // </Provider>
-
+        </Provider>
         );
     }
 }

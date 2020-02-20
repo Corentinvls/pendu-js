@@ -1,7 +1,12 @@
 import React from 'react';
 import '../App.css';
+import {withRouter} from 'react-router-dom';
+import firebase from '../firebase.js';
 
-export default class JungleClick extends React.Component {
+import {connect} from "react-redux";
+import {addGame} from "../redux/actions";
+
+class RageClick extends React.Component {
 
 
     constructor() {
@@ -11,13 +16,89 @@ export default class JungleClick extends React.Component {
             isOn: false,
             start: 0,
             score: 0,
-            color: "White"
+            color: "White",
+            rageColor: []
         };
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
         this.click = this.click.bind(this);
-
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+     handleSubmit() {
+            const itemsRef = firebase.database().ref('rageColor');
+            const item = {
+                name: this.props.name,
+                score: this.state.score,
+            };
+            itemsRef.push(item)
+        }
+
+      componentDidMount() {
+       const itemsRef = firebase.database().ref('rageColor');
+       itemsRef.on('value', (snapshot) => {
+            let items = snapshot.val();
+            let newState = [];
+            for (let item in items) {
+                newState.push({
+                    name: items[item].name,
+                    score: items[item].score,
+                });
+            }
+            newState.sort((a, b) => {
+                if (a.score === -1) {
+                    return 1
+                } else if (b.score === -1) {
+                    return -1
+                } else if (a.score === b.score) {
+                    return 0;
+                } else {
+                    if (a.score < b.score) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+            while (newState.length > 5) {
+                newState.pop();
+            }
+            this.props.addGame(newState);
+            this.setState({...this.state, rageColor: this.props.rageColor});
+        });
+    }
+
+    sortScore() {
+            this.componentDidMount();
+            let array = this.props.rageColor;
+            console.log(array);
+            array.push({
+                name: this.props.name,
+                score: this.props.score,
+            });
+
+            array.sort((a, b) => {
+                if (a.score === -1) {
+                    return 1
+                } else if (b.score === -1) {
+                    return -1
+                } else if (a.score === b.score) {
+                    return 0;
+                } else {
+                    if (a.score < b.score) {
+                        return -1;
+                    } else {
+                        return 1;
+                    }
+                }
+            });
+            if (array.length > 5) {
+                array.pop();
+            }
+            this.props.addGame(array);
+            this.handleSubmit();
+            this.setState({...this.state, rageColor: this.props.rageColor});
+        }
 
     startTimer() {
         this.stopTimer();
@@ -37,9 +118,11 @@ export default class JungleClick extends React.Component {
 
 
     stopTimer() {
+        this.sortScore()
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
+        ;
     }
 
     randColor() {
@@ -49,7 +132,6 @@ export default class JungleClick extends React.Component {
     }
 
     click(value) {
-        console.log("coucou");
         console.log(value);
         if (value === this.state.color) {
             this.setState({
@@ -83,10 +165,10 @@ export default class JungleClick extends React.Component {
         return (
             <div>
                 <header>
-                    <h1 id="maintitle">Rage Color</h1>
+                    <h1 id="maintitle">Jungle Click</h1>
                     <h2>timer: {(this.state.time)}</h2>
                     <h2>score: {(this.state.score)}</h2>
-                    <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
+                    <button id="newgame" type="button" onClick={event => this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <span className={btnClass}>look at me</span>
                     <div>
@@ -114,6 +196,22 @@ export default class JungleClick extends React.Component {
 
 
 }
+const mapStateToProps = state => {
+    return {
+        rageColor: state.rageColor,
+        name: state.name
+    };
+};
 
+const mapDispatchToProps = dispatch => {
+    return {
+        addGame: rageColor => {
+            dispatch(addGame(rageColor))
+        }
+    };
+};
 
-
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(RageClick));
