@@ -1,18 +1,19 @@
 import React from 'react';
-import { setName} from "../redux/actions";
-import { withRouter } from 'react-router-dom';
+import {setName} from "../redux/actions";
+import {withRouter} from 'react-router-dom';
 
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 
 class Configuration extends React.Component {
     constructor() {
         super();
 
         this.state = {
-           name:''
+            name: ''
         }
     }
-    setName(event){
+
+    setName(event) {
         event.preventDefault();
         let target = event.target;
 
@@ -22,9 +23,8 @@ class Configuration extends React.Component {
     }
 
 
-
     render() {
-        const { name } = this.props;
+        const {name} = this.props;
 
 
         return (
@@ -40,6 +40,7 @@ class Configuration extends React.Component {
     }
 
 }
+
 const mapStateToProps = state => {
     return {
         name: state.name
@@ -48,7 +49,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setName: name =>{
+        setName: name => {
             dispatch(setName(name))
         }
     };

@@ -7,7 +7,6 @@ export const ADD_JUNGLE = 'ADD_JUNGLE';
 export const ADD_SPEED = 'ADD_SPEED';
 
 
-
 /**
  * Add student to store
  *
@@ -15,19 +14,18 @@ export const ADD_SPEED = 'ADD_SPEED';
  * @param rageColor
  */
 export function addRage(rageColor) {
-    return { type: ADD_RAGE, rageColor };
+    return {type: ADD_RAGE, rageColor};
 }
 
 export function addJungle(jungleClick) {
-    return { type: ADD_JUNGLE, jungleClick };
+    return {type: ADD_JUNGLE, jungleClick};
 }
 
-export function addSpeed(speedClick)
-{
-    return { type : ADD_SPEED, speedClick};
+export function addSpeed(speedClick) {
+    return {type: ADD_SPEED, speedClick};
 }
 
 export function setName(name) {
-    return { type: SET_NAME, name };
+    return {type: SET_NAME, name};
 }
 

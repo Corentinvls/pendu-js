@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 //import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
-import {addRage, addJungle} from "../redux/actions";
+import {addRage, addJungle, addSpeed} from "../redux/actions";
 import firebase from "../firebase";
 
 class Accueil extends React.Component {
@@ -12,7 +12,9 @@ class Accueil extends React.Component {
         this.state = {
             score: 0,
             rageColor: [],
-            jungleClick: []
+            jungleClick: [],
+            speedClick: []
+
         };
 
     }
@@ -79,6 +81,38 @@ class Accueil extends React.Component {
                 }
                 this.props.addJungle(newState);
                 this.setState({...this.state, jungleClick: this.props.jungleClick});
+
+                const itemsSpeed = firebase.database().ref('speedClick');
+                itemsSpeed.on('value', (snapshot) => {
+                    let items = snapshot.val();
+                    let newState = [];
+                    for (let item in items) {
+                        newState.push({
+                            name: items[item].name,
+                            score: items[item].score,
+                        });
+                    }
+                    newState.sort((a, b) => {
+                        if (a.score === -1) {
+                            return 1
+                        } else if (b.score === -1) {
+                            return -1
+                        } else if (a.score === b.score) {
+                            return 0;
+                        } else {
+                            if (a.score > b.score) {
+                                return -1;
+                            } else {
+                                return 1;
+                            }
+                        }
+                    });
+                    while (newState.length > 5) {
+                        newState.pop();
+                    }
+                    this.props.addSpeed(newState);
+                    this.setState({...this.state, speedClick: this.props.speedClick});
+                });
             });
         });
     }
@@ -126,6 +160,24 @@ class Accueil extends React.Component {
                         </tbody>
                     </table>
                 </div>
+                <div>
+                    <h2> Score speedClick</h2>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Score</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {this.props.speedClick.map((speedClickIndex, index) => (
+                            <tr key={index}>
+                                <td>{speedClickIndex.name}</td>
+                                <td>{speedClickIndex.score}</td>
+                            </tr>))}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     }
@@ -133,6 +185,7 @@ class Accueil extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        speedClick: state.speedClick,
         jungleClick: state.jungleClick,
         rageColor: state.rageColor,
         name: state.name
@@ -146,6 +199,9 @@ const mapDispatchToProps = dispatch => {
         },
         addJungle: jungleClick => {
             dispatch(addJungle(jungleClick))
+        },
+        addSpeed: speedClick => {
+            dispatch(addSpeed(speedClick))
         }
     };
 };

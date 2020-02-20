@@ -14,10 +14,10 @@ const initialState = {
      * @param      {String}  {name}
      * @param      {Number}  {score}
      */
-    name:'',
+    name: '',
     rageColor: [],
     jungleClick: [],
-    speedClick:[]
+    speedClick: []
 };
 
 

@@ -33,57 +33,57 @@ export default class App extends React.Component {
 
     render() {
         return (
-          <Provider store={store}>
-            <Router>
-                <div>
+            <Provider store={store}>
+                <Router>
+                    <div>
 
-                    <nav>
-                    <ParticlesBg color="ffffff" num={1000}type="lines"  bg={true}/>
-                        <ul id="nav">
-                            <li className="navli">
-                                <Link to="/">Acceuil</Link>
-                            </li>
-                            <li className="navli">
-                                <Link to="/speedclick">Speed Click</Link>
-                            </li>
-                            <li className="navli">
-                                <Link to="/jungleclick">Jungle Click</Link>
-                            </li>
-                            <li className="navli">
-                                <Link to="/ragecolor">Rage Color</Link>
-                            </li>
-                            <li className="navli">
-                                <Link to="/configuration">Configuration</Link>
-                            </li>
-                            <li className="navli">
-                                <Link to="/aPropos">A propos</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                    <Switch>
-                        <Route exact path="/">
-                            <Accueil/>
-                        </Route>
-                        <Route exact path="/speedclick">
-                            <SpeedClick/>
-                        </Route>
-                        <Route exact path="/jungleclick">
-                            <JungleClick/>
-                        </Route>
-                        <Route exact path="/ragecolor">
-                            <RageColor/>
-                        </Route>
-                        <Route path="/configuration">
-                            <Configuration/>
-                        </Route>
-                        <Route path="/aPropos">
-                            <APropos/>
-                        </Route>
-                    </Switch>
-                </div>
+                        <nav>
+                            <ParticlesBg color="ffffff" num={1000} type="lines" bg={true}/>
+                            <ul id="nav">
+                                <li className="navli">
+                                    <Link to="/">Acceuil</Link>
+                                </li>
+                                <li className="navli">
+                                    <Link to="/speedclick">Speed Click</Link>
+                                </li>
+                                <li className="navli">
+                                    <Link to="/jungleclick">Jungle Click</Link>
+                                </li>
+                                <li className="navli">
+                                    <Link to="/ragecolor">Rage Color</Link>
+                                </li>
+                                <li className="navli">
+                                    <Link to="/configuration">Configuration</Link>
+                                </li>
+                                <li className="navli">
+                                    <Link to="/aPropos">A propos</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                        <Switch>
+                            <Route exact path="/">
+                                <Accueil/>
+                            </Route>
+                            <Route exact path="/speedclick">
+                                <SpeedClick/>
+                            </Route>
+                            <Route exact path="/jungleclick">
+                                <JungleClick/>
+                            </Route>
+                            <Route exact path="/ragecolor">
+                                <RageColor/>
+                            </Route>
+                            <Route path="/configuration">
+                                <Configuration/>
+                            </Route>
+                            <Route path="/aPropos">
+                                <APropos/>
+                            </Route>
+                        </Switch>
+                    </div>
 
-            </Router>
-        </Provider>
+                </Router>
+            </Provider>
         );
     }
 }

@@ -5,6 +5,7 @@ import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
 import {addJungle} from "../redux/actions";
+
 class JungleClick extends React.Component {
 
 
@@ -22,6 +23,7 @@ class JungleClick extends React.Component {
         this.click = this.click.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleSubmit() {
         const itemsRef = firebase.database().ref('jungleClick');
         const item = {
@@ -30,6 +32,7 @@ class JungleClick extends React.Component {
         };
         itemsRef.push(item)
     }
+
     sortScore() {
 
         let array = this.props.jungleClick;
@@ -60,6 +63,7 @@ class JungleClick extends React.Component {
         this.handleSubmit();
         this.setState({...this.state, jungleClick: this.props.jungleClick});
     }
+
     startTimer() {
 
         this.stopTimer();
@@ -80,7 +84,7 @@ class JungleClick extends React.Component {
 
 
     stopTimer() {
-        if(this.state.isOn){
+        if (this.state.isOn) {
             this.sortScore();
         }
         this.setState({isOn: false, time: 0});

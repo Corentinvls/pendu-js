@@ -25,48 +25,47 @@ class RageClick extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-     handleSubmit() {
-            const itemsRef = firebase.database().ref('rageColor');
-            const item = {
-                name: this.props.name,
-                score: this.state.score,
-            };
-            itemsRef.push(item)
-        }
-
+    handleSubmit() {
+        const itemsRef = firebase.database().ref('rageColor');
+        const item = {
+            name: this.props.name,
+            score: this.state.score,
+        };
+        itemsRef.push(item)
+    }
 
 
     sortScore() {
 
-            let array = this.props.rageColor;
-            console.log(array);
-            array.push({
-                name: this.props.name,
-                score: this.props.score,
-            });
+        let array = this.props.rageColor;
+        console.log(array);
+        array.push({
+            name: this.props.name,
+            score: this.props.score,
+        });
 
-            array.sort((a, b) => {
-                if (a.score === -1) {
-                    return 1
-                } else if (b.score === -1) {
-                    return -1
-                } else if (a.score === b.score) {
-                    return 0;
+        array.sort((a, b) => {
+            if (a.score === -1) {
+                return 1
+            } else if (b.score === -1) {
+                return -1
+            } else if (a.score === b.score) {
+                return 0;
+            } else {
+                if (a.score < b.score) {
+                    return -1;
                 } else {
-                    if (a.score < b.score) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
+                    return 1;
                 }
-            });
-            if (array.length > 5) {
-                array.pop();
             }
-            this.props.addRage(array);
-            this.handleSubmit();
-            this.setState({...this.state, rageColor: this.props.rageColor});
+        });
+        if (array.length > 5) {
+            array.pop();
         }
+        this.props.addRage(array);
+        this.handleSubmit();
+        this.setState({...this.state, rageColor: this.props.rageColor});
+    }
 
     startTimer() {
         this.stopTimer();
@@ -134,10 +133,10 @@ class RageClick extends React.Component {
             <div>
                 <header>
                     <h1 id="maintitle">Rage Color</h1>
-                    <h2>score: {(this.state.score)}  timer: {(this.state.time)}</h2>
+                    <h2>score: {(this.state.score)} timer: {(this.state.time)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
-                    <span id="look" className={btnClass} >look at me</span>
+                    <span id="look" className={btnClass}>look at me</span>
                     <div>
 
 
@@ -163,6 +162,7 @@ class RageClick extends React.Component {
 
 
 }
+
 const mapStateToProps = state => {
     return {
         rageColor: state.rageColor,

@@ -136,82 +136,86 @@ header {
 }
 
 .Violet {
-background: purple;
+    background: purple;
 }
 
 .Orange {
-background: orange;
+    background: orange;
 }
 
 .Marron {
-background: saddlebrown;
+    background: saddlebrown;
 }
 
 .Rose {
-background: plum;
+    background: plum;
 }
 
 
 /* CSS for background animation */
 
 
-  body{
+body {
     background-color: grey;
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: 'GoSpeeds';
     src: local('GoSpeeds'), url(./fonts/GoSpeeds.ttf) format('truetype');
-  }
+}
 
 
-  body p ,h1,h2,h3,.bour,li,span{
+body p, h1, h2, h3, .bour, li, span {
 
     font-family: GoSpeeds;
-  }
+}
 
-  body li{
+body li {
 
     border-color: black;
     border-radius: 2px;
     border-style: solid;
 
-  }
+}
 
-  .navli a{
+.navli a {
 
     color: black;
     text-decoration: none;
-  }
-  #look{
-      font-size: 80px;
-      padding-left:  145px;
-      padding-right:  145px;
+}
 
-  }
-  button {
-      height: 35px;
-      width: 135px;
-      background-color: lightgray;
-      text-align: center;
-      border: solid 1.5px lightsteelblue;
-  }
-  button:disabled{
-      background-color: lightgray!important;
-  }
+#look {
+    font-size: 80px;
+    padding-left: 145px;
+    padding-right: 145px;
 
-  #aproposdiv h2 {
-      display: flex;
-      align-content: center;
-      justify-content: space-around;
-  }
+}
 
-  #aproposdiv h2:hover {
-      color: red;
-  }
-  #scorePanel{
-      background-color: darkgrey;
-      display: flex;
-      align-items: stretch;
-      justify-content: space-around;
-  }
+button {
+    height: 35px;
+    width: 135px;
+    background-color: lightgray;
+    text-align: center;
+    border: solid 1.5px lightsteelblue;
+}
+
+button:disabled {
+    background-color: lightgray !important;
+}
+
+#aproposdiv h2 {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}
+
+#aproposdiv h2:hover {
+    color: red;
+}
+
+#scorePanel {
+    background-color: darkgrey;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+}
