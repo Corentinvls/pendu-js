@@ -25,28 +25,26 @@ export default class SpeedClick extends React.Component {
             start: Date.now() - this.state.time,
             score: 0
         });
-        this.timer = setInterval(() => this.setState(this.stopTimer()), 50);
+        this.timerEnd = setInterval(() => this.setState(this.stopTimer()), 50);
         this.timer = setInterval(() => this.setState({
             time: (30 - Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
         }), 50);
     }
 
 
-
     stopTimer() {
         if (this.state.time <= 0) {
             this.setState({isOn: false});
             clearInterval(this.timer);
+            clearInterval(this.timerEnd);
             this.setState({time: 30})
         }
     }
+
     click() {
-
-            this.setState({
-                score: this.state.score + 1
-            });
-
-
+        this.setState({
+            score: this.state.score + 1
+        });
     }
 
     render() {
@@ -60,7 +58,8 @@ export default class SpeedClick extends React.Component {
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <div>
-                        <button id="bour" type="button" className="bour" onClick={this.click} disabled={!this.state.isOn}>Bourrine
+                        <button id="bour" type="button" className="bour" onClick={this.click}
+                                disabled={!this.state.isOn}>Bourrine
                             moi
                         </button>
                     </div>

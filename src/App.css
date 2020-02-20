@@ -123,3 +123,18 @@ header {
     position: relative;
     top: 1px;
 }
+.Vert{
+    background: green;
+}
+.Jaune{
+    background: yellow;
+}
+.Rouge{
+    background: red;
+}
+.Bleu{
+    background: dodgerblue;
+}
+.White{
+
+}

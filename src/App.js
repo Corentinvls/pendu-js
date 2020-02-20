@@ -14,6 +14,8 @@ import {
 import SpeedClick from './components/SpeedClick';
 import Configuration from './components/Configuration';
 import APropos from './components/APropos';
+import JungleClick from "./components/JungleClick";
+import RageColor from "./components/RageColor";
 
 
 
@@ -42,6 +44,12 @@ export default class App extends React.Component {
                     <Link to="/speedclick">Speed Click</Link>
                   </li>
                   <li className="navli">
+                    <Link to="/jungleclick">Jungle Click</Link>
+                  </li>
+                  <li className="navli">
+                    <Link to="/ragecolor">Rage Color</Link>
+                  </li>
+                  <li className="navli">
                     <Link to="/configuration">Configuration</Link>
                   </li>
                   <li className="navli">
@@ -52,6 +60,12 @@ export default class App extends React.Component {
               <Switch>
                 <Route exact path="/speedclick">
                   <SpeedClick/>
+                </Route>
+                <Route exact path="/jungleclick">
+                  <JungleClick/>
+                </Route>
+                <Route exact path="/ragecolor">
+                  <RageColor/>
                 </Route>
                 <Route path="/configuration">
                   <Configuration/>
