@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
 
-export default class Accueil extends React.Component {
+export default class JungleClick extends React.Component {
 
 
     constructor() {
@@ -27,8 +27,7 @@ export default class Accueil extends React.Component {
         });
         this.timer = setInterval(() => this.setState(this.stopTimer()), 50);
         this.timer = setInterval(() => this.setState({
-            time: (3 - Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
-        }), 50);
+            time: (Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)}), 50);
     }
 
 
@@ -41,12 +40,9 @@ export default class Accueil extends React.Component {
         }
     }
     click() {
-        if(this.state.isOn){
             this.setState({
                 score: this.state.score + 1
             });
-        }
-
     }
 
     render() {
@@ -54,13 +50,13 @@ export default class Accueil extends React.Component {
         return (
             <div>
                 <header>
-                    <h1 id="maintitle">Speed Click</h1>
+                    <h1 id="maintitle">Jungle Click</h1>
                     <h2>timer: {(this.state.time)}</h2>
                     <h2>score: {(this.state.score)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <div>
-                        <button id="newgame" type="button" onClick={this.click} disabled={!this.state.isOn}>Bourrine
+                        <button id="bour" type="button" className="bour" onClick={this.click} disabled={!this.state.isOn}>Bourrine
                             moi
                         </button>
                     </div>

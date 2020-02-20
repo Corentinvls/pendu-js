@@ -1,53 +1,125 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
-#nav{
-  background-color: #a1b2cf;
-  min-height: 30px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  color: white;
-  padding: 10px;
+
+
+{
+  background-color: #8c9bb4;
+
 }
-header{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+#nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #cdcdcd;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: space-around;
+}
+
+.navli {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navli:hover {
+    background-color: #a6a6a6;
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bour {
+    -moz-box-shadow: inset 2px 14px 10px 2px #f29c93;
+    -webkit-box-shadow: inset 2px 14px 10px 2px #f29c93;
+    box-shadow: inset 2px 14px 10px 2px #f29c93;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #ce0100));
+    background: -moz-linear-gradient(center top, #fe1a00 5%, #ce0100 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#ce0100');
+    background-color: #fe1a00;
+    -webkit-border-top-left-radius: 42px;
+    -moz-border-radius-topleft: 42px;
+    border-top-left-radius: 42px;
+    -webkit-border-top-right-radius: 42px;
+    -moz-border-radius-topright: 42px;
+    border-top-right-radius: 42px;
+    -webkit-border-bottom-right-radius: 42px;
+    -moz-border-radius-bottomright: 42px;
+    border-bottom-right-radius: 42px;
+    -webkit-border-bottom-left-radius: 42px;
+    -moz-border-radius-bottomleft: 42px;
+    border-bottom-left-radius: 42px;
+    text-indent: -3.93px;
+    border: 2px solid #d83526;
+    display: inline-block;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 19px;
+    font-weight: bold;
+    font-style: normal;
+    height: 69px;
+    line-height: 69px;
+    width: 178px;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+}
+
+.bour:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ce0100), color-stop(1, #fe1a00));
+    background: -moz-linear-gradient(center top, #ce0100 5%, #fe1a00 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ce0100', endColorstr='#fe1a00');
+    background-color: #ce0100;
+}
+
+.bour:active {
+    position: relative;
+    top: 1px;
 }

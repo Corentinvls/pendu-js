@@ -11,7 +11,7 @@ import {
 } from "react-router-dom";
 
 
-import Accueil from './components/Accueil';
+import SpeedClick from './components/SpeedClick';
 import Configuration from './components/Configuration';
 import APropos from './components/APropos';
 
@@ -38,20 +38,20 @@ export default class App extends React.Component {
             <div>
               <nav>
                 <ul id="nav">
-                  <li>
-                    <Link to="/">Accueil</Link>
+                  <li className="navli">
+                    <Link to="/speedclick">Speed Click</Link>
                   </li>
-                  <li>
+                  <li className="navli">
                     <Link to="/configuration">Configuration</Link>
                   </li>
-                  <li>
+                  <li className="navli">
                     <Link to="/aPropos">A propos</Link>
                   </li>
                 </ul>
               </nav>
               <Switch>
-                <Route exact path="/">
-                  <Accueil/>
+                <Route exact path="/speedclick">
+                  <SpeedClick/>
                 </Route>
                 <Route path="/configuration">
                   <Configuration/>
