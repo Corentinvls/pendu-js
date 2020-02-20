@@ -17,8 +17,6 @@ import APropos from './components/APropos';
 import JungleClick from "./components/JungleClick";
 import RageColor from "./components/RageColor";
 
-// import for background animation
-
 
 import ParticlesBg from "particles-bg";
 
@@ -27,10 +25,18 @@ import './fonts/GoSpeeds.ttf'
 const store = createStore(reducer);
 
 export default class App extends React.Component {
+    /**
+     * Constructor add the props of react component
+     */
     constructor(props) {
         super(props);
     }
 
+
+    /**
+     * display the DOM virtual
+     * return the DOM
+     */
     render() {
         return (
             <Provider store={store}>

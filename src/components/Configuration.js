@@ -5,6 +5,9 @@ import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 
 class Configuration extends React.Component {
+    /**
+     *  constructor and add name in the state
+     */
     constructor() {
         super();
 
@@ -13,6 +16,9 @@ class Configuration extends React.Component {
         }
     }
 
+    /**
+     *  event click button and set the name in the props
+     */
     setName(event) {
         event.preventDefault();
         let target = event.target;
@@ -22,7 +28,10 @@ class Configuration extends React.Component {
         );
     }
 
-
+    /**
+     * display the DOM virtual
+     * return the DOM
+     */
     render() {
         const {name} = this.props;
 
@@ -42,12 +51,20 @@ class Configuration extends React.Component {
 
 }
 
+/**
+ *  add the state in the props
+ *  @return the state in the props
+ */
 const mapStateToProps = state => {
     return {
         name: state.name
     };
 }
 
+/**
+ *  mapDispatchToProps is used for dispatching actions to the store.
+ *  @return a function and dispatch setName with name
+ */
 const mapDispatchToProps = dispatch => {
     return {
         setName: name => {
@@ -56,6 +73,9 @@ const mapDispatchToProps = dispatch => {
     };
 }
 
+/**
+ *  Create a new component that is "connected" (to borrow redux terminology) to the router.
+ */
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps

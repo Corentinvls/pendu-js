@@ -5,7 +5,9 @@ import {
     ADD_SPEED
 } from './actions'
 
-
+/**
+ *  Initialize the state with variable name, rageColor, jungleClick, speedClick
+ */
 const initialState = {
     /**
      *
@@ -20,7 +22,9 @@ const initialState = {
     speedClick: []
 };
 
-
+/**
+ *  Reducers specify how the application's state changes in response to actions sent to the store.
+ */
 export default function reducer(state = initialState, action) {
     console.log('reducer', action.type);
     console.log(action.rageColor);
