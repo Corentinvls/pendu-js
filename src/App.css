@@ -37,12 +37,6 @@
     }
 }
 
-
-{
-    background-color: #8c9bb4
-;
-
-}
 #nav {
     list-style-type: none;
     margin: 0;
@@ -156,3 +150,53 @@ background: saddlebrown;
 .Rose {
 background: plum;
 }
+
+
+/* CSS for background animation */
+
+
+  body{
+    background-color: grey;
+  }
+
+  @font-face {
+    font-family: 'GoSpeeds';
+    src: local('GoSpeeds'), url(./fonts/GoSpeeds.ttf) format('truetype');
+  }
+
+
+  body p ,h1,h2,h3,.bour,li,span{
+
+    font-family: GoSpeeds;
+  }
+
+  body li{
+
+    border-color: black;
+    border-radius: 2px;
+    border-style: solid;
+
+  }
+
+  .navli a{
+
+    color: black;
+    text-decoration: none;
+  }
+  button {
+      height: 35px;
+      width: 135px;
+      background-color: lightgray;
+      text-align: center;
+      border: solid 1.5px lightsteelblue;
+  }
+
+  #aproposdiv h2 {
+      display: flex;
+      align-content: center;
+      justify-content: space-around;
+  }
+
+  #aproposdiv h2:hover {
+      color: red;
+  }
