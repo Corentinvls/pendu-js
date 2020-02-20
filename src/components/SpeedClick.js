@@ -7,6 +7,9 @@ import {connect} from "react-redux";
 import {addSpeed} from "../redux/actions";
 
 class SpeedClick extends React.Component {
+    /**
+     * constructor add in the state time, isOn, start, score, speedClick
+     */
     constructor() {
         super();
         this.state = {
@@ -22,6 +25,9 @@ class SpeedClick extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /**
+     *  Add in the database name and score
+     */
     handleSubmit() {
         const itemsRef = firebase.database().ref('speedClick');
         const item = {
@@ -31,7 +37,9 @@ class SpeedClick extends React.Component {
         itemsRef.push(item)
     }
 
-
+    /**
+     *  sort the array and add int the props and in the database and in the state
+     */
     sortScore() {
         let array = this.props.speedClick;
         console.log(array);
@@ -63,6 +71,9 @@ class SpeedClick extends React.Component {
         this.setState({...this.state, speedClick: this.props.speedClick});
     }
 
+    /**
+     *  Start the timer
+     */
     startTimer() {
         clearInterval(this.timer);
         clearInterval(this.timerEnd);
@@ -78,7 +89,9 @@ class SpeedClick extends React.Component {
         }), 50);
     }
 
-
+    /**
+     *  Stop the timer
+     */
     stopTimer() {
         if (this.state.time <= 0) {
             this.setState({isOn: false});
@@ -89,12 +102,19 @@ class SpeedClick extends React.Component {
         }
     }
 
+    /**
+     * increment the value of score
+     */
     click() {
         this.setState({
             score: this.state.score + 1
         });
     }
 
+    /**
+     *  Display the virtual DOM
+     *  @return the virtual DOM
+     */
     render() {
 
         return (
@@ -116,6 +136,10 @@ class SpeedClick extends React.Component {
     }
 }
 
+/**
+ *  add the state in the props
+ *  @return the state in the props
+ */
 const mapStateToProps = state => {
     return {
         speedClick: state.speedClick,
@@ -123,6 +147,10 @@ const mapStateToProps = state => {
     };
 };
 
+/**
+ *  mapDispatchToProps is used for dispatching actions to the store.
+ *  @return a function and dispatch speedClick with speedClick
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addSpeed: speedClick => {
@@ -131,6 +159,9 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
+/**
+ *  Create a new component that is "connected" (to borrow redux terminology) to the router.
+ */
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
