@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
-import {addJungle, addRage} from "../redux/actions";
+import {addJungle} from "../redux/actions";
 class JungleClick extends React.Component {
 
 

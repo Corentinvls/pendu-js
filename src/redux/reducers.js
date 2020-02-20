@@ -2,6 +2,7 @@ import {
     SET_NAME,
     ADD_RAGE,
     ADD_JUNGLE,
+    ADD_SPEED
 } from './actions'
 
 
@@ -15,7 +16,8 @@ const initialState = {
      */
     name:'',
     rageColor: [],
-    jungleClick: []
+    jungleClick: [],
+    speedClick:[]
 };
 
 
@@ -31,6 +33,8 @@ export default function reducer(state = initialState, action) {
             return {...state, name: action.name};
         case ADD_JUNGLE:
             return {...state, jungleClick: action.jungleClick};
+        case ADD_SPEED:
+            return {...state, speedClick: action.speedClick}
         default :
             return state;
     }
