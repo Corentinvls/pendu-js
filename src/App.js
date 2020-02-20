@@ -45,7 +45,7 @@ export default class App extends React.Component {
                 <div>
                     
                     <nav>
-                    <ParticlesBg color="ffffff" num={200}type="lines"  bg={true}/>
+                    <ParticlesBg color="ffffff" num={8500}type="lines"  bg={true}/>
                         <ul id="nav">
                             <li className="navli">
                                 <Link to="/speedclick">Speed Click</Link>

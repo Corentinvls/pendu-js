@@ -57,14 +57,15 @@ export default class SpeedClick extends React.Component {
                     <h2>score: {(this.state.score)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
-                    <div>
+                
+                </header>
+
+                <div id="gameDiv">
                         <button id="bour" type="button" className="bour" onClick={this.click}
                                 disabled={!this.state.isOn}>Bourrine
                             moi
                         </button>
                     </div>
-                </header>
-
             </div>
         )
     }

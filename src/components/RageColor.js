@@ -90,8 +90,9 @@ export default class JungleClick extends React.Component {
                     <h2>score: {(this.state.score)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
-                    <span className={btnClass}>look at me</span>
-                    <div>
+                    </header>
+                    <span id="lookatme"className={btnClass}>look at me</span>
+                    <div id="gameDiv">
 
 
                         <button id="Vert" type="button" className={"Vert"} onClick={event => this.click("Vert")}
@@ -108,7 +109,7 @@ export default class JungleClick extends React.Component {
                                 disabled={!this.state.isOn}>Bleu
                         </button>
                     </div>
-                </header>
+            
 
             </div>
         )
