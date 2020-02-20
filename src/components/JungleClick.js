@@ -5,7 +5,9 @@ import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
 import {addJungle} from "../redux/actions";
-
+/**
+ * Components Game JungleClick
+ */
 class JungleClick extends React.Component {
 
 
@@ -24,6 +26,10 @@ class JungleClick extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    /**
+     * Method to write in Firebase
+     * in jungleClick table
+     */
     handleSubmit() {
         const itemsRef = firebase.database().ref('jungleClick');
         const item = {
@@ -32,15 +38,17 @@ class JungleClick extends React.Component {
         };
         itemsRef.push(item)
     }
-
+    /**
+     * Method to add the score in the store and sort them
+     */
     sortScore() {
-
+        // copy the props in an array and add the new score
         let array = this.props.jungleClick;
         array.push({
             name: this.props.name,
             score: this.props.score,
         });
-
+        // sort the array to display the best scores
         array.sort((a, b) => {
             if (a.score === -1) {
                 return 1
@@ -56,14 +64,19 @@ class JungleClick extends React.Component {
                 }
             }
         });
+        // display just top five
         if (array.length > 5) {
             array.pop();
         }
+        // refill the props and upload state
         this.props.addJungle(array);
         this.handleSubmit();
         this.setState({...this.state, jungleClick: this.props.jungleClick});
     }
 
+    /**
+     * Method to start the game
+     */
     startTimer() {
 
         this.stopTimer();
@@ -82,7 +95,9 @@ class JungleClick extends React.Component {
 
     }
 
-
+    /**
+     * Method to stop the game
+     */
     stopTimer() {
         if (this.state.isOn) {
             this.sortScore();
@@ -92,15 +107,22 @@ class JungleClick extends React.Component {
         clearInterval(this.timerColor);
     }
 
+    /**
+     * Method to generate random color
+     * @returns {string}
+     */
     randColor() {
         var b = Math.floor(Math.random() * 8);
         let couleur = ["Vert", "Jaune", "Rouge", "Bleu", "Violet", "Orange", "Marron", "Rose"];
         return couleur[b];
     }
-
+    /**
+     * Method increment score if the player click wright or active lose condition if it's wrong
+     * @returns {string}
+     */
     click(value1, value2, value3, value4) {
         if (value1 === value2 || value1 === value3 || value1 === value4) {
-
+            // new timer in order to generate randoms timer
             clearInterval(this.timer);
             this.timer = setInterval(() => this.setState({
                 time: (Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
@@ -151,14 +173,22 @@ class JungleClick extends React.Component {
         )
     }
 }
-
+/**
+ * Method to convert state in props
+ * @param state
+ * @returns {{speedClick: ([]|*[]), name: *, jungleClick: ([]|*[]), rageColor: ([]|*[])}}
+ */
 const mapStateToProps = state => {
     return {
         jungleClick: state.jungleClick,
         name: state.name
     };
 };
-
+/**
+ * Method to dispatch states in the store
+ * @param dispatch
+ * @returns {{addJungle: addJungle, addRage: addRage, addSpeed: addSpeed}}
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addJungle: jungleClick => {
@@ -166,7 +196,9 @@ const mapDispatchToProps = dispatch => {
         }
     };
 };
-
+/**
+ * Method to connect with store
+ */
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps

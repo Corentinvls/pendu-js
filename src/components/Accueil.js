@@ -1,11 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-//import firebase from '../firebase.js';
-
 import {connect} from "react-redux";
 import {addRage, addJungle, addSpeed} from "../redux/actions";
 import firebase from "../firebase";
 
+/**
+ * Components Home page where the score are display
+ */
 class Accueil extends React.Component {
     constructor() {
         super();
@@ -14,12 +15,14 @@ class Accueil extends React.Component {
             rageColor: [],
             jungleClick: [],
             speedClick: []
-
         };
-
     }
 
+    /**
+     * Method to read the table in Firebase
+     */
     componentDidMount() {
+        // read the score of Rage color
         const itemsRef = firebase.database().ref('rageColor');
         itemsRef.on('value', (snapshot) => {
             let items = snapshot.val();
@@ -51,6 +54,7 @@ class Accueil extends React.Component {
             this.props.addRage(newState);
             this.setState({...this.state, rageColor: this.props.rageColor});
 
+            // read the score of Jungle Click
             const itemsRefjun = firebase.database().ref('jungleClick');
             itemsRefjun.on('value', (snapshot) => {
                 let items = snapshot.val();
@@ -82,6 +86,7 @@ class Accueil extends React.Component {
                 this.props.addJungle(newState);
                 this.setState({...this.state, jungleClick: this.props.jungleClick});
 
+                // read the score of Speed Click
                 const itemsSpeed = firebase.database().ref('speedClick');
                 itemsSpeed.on('value', (snapshot) => {
                     let items = snapshot.val();
@@ -117,11 +122,12 @@ class Accueil extends React.Component {
         });
     }
 
-
+    /**
+     * Method to display the component
+     * @returns {*}
+     */
     render() {
-
         const {rageColor} = this.props;
-
         return (
             <div id="scorePanel">
                 <div>
@@ -183,6 +189,11 @@ class Accueil extends React.Component {
     }
 }
 
+/**
+ * Method to convert state in props
+ * @param state
+ * @returns {{speedClick: ([]|*[]), name: *, jungleClick: ([]|*[]), rageColor: ([]|*[])}}
+ */
 const mapStateToProps = state => {
     return {
         speedClick: state.speedClick,
@@ -191,7 +202,11 @@ const mapStateToProps = state => {
         name: state.name
     };
 };
-
+/**
+ * Method to dispatch states in the store
+ * @param dispatch
+ * @returns {{addJungle: addJungle, addRage: addRage, addSpeed: addSpeed}}
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addRage: rageColor => {
@@ -205,7 +220,9 @@ const mapDispatchToProps = dispatch => {
         }
     };
 };
-
+/**
+ * Method to connect with store
+ */
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps

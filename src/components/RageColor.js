@@ -5,7 +5,9 @@ import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
 import {addRage} from "../redux/actions";
-
+/**
+ * Components Game RageClick
+ */
 class RageClick extends React.Component {
 
 
@@ -24,7 +26,10 @@ class RageClick extends React.Component {
         this.click = this.click.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    /**
+     * Method to write in Firebase
+     * in jungleClick table
+     */
     handleSubmit() {
         const itemsRef = firebase.database().ref('rageColor');
         const item = {
@@ -34,16 +39,18 @@ class RageClick extends React.Component {
         itemsRef.push(item)
     }
 
-
+    /**
+     * Method to add the score in the store and sort them
+     */
     sortScore() {
-
+// copy the props in an array and add the new score
         let array = this.props.rageColor;
         console.log(array);
         array.push({
             name: this.props.name,
             score: this.props.score,
         });
-
+// sort the array to display the best scores
         array.sort((a, b) => {
             if (a.score === -1) {
                 return 1
@@ -59,14 +66,18 @@ class RageClick extends React.Component {
                 }
             }
         });
+        // display just top five
         if (array.length > 5) {
             array.pop();
         }
+        // refill the props and upload state
         this.props.addRage(array);
         this.handleSubmit();
         this.setState({...this.state, rageColor: this.props.rageColor});
     }
-
+    /**
+     * Method to start the game
+     */
     startTimer() {
         this.stopTimer();
         this.setState({
@@ -83,7 +94,9 @@ class RageClick extends React.Component {
         this.timerColor = setInterval(() => this.setState({color: this.randColor()}), Math.floor(Math.random() * 3000) + 1000);
     }
 
-
+    /**
+     * Method to stop the game
+     */
     stopTimer() {
         this.sortScore();
         this.setState({isOn: false, time: 0});
@@ -91,13 +104,19 @@ class RageClick extends React.Component {
         clearInterval(this.timerColor);
 
     }
-
+    /**
+     * Method to generate random color
+     * @returns {string}
+     */
     randColor() {
         let couleur = ["Vert", "Jaune", "Rouge", "Bleu"];
         let b = Math.floor(Math.random() * 4);
         return couleur[b];
     }
-
+    /**
+     * Method increment score if the player click wright or active lose condition if it's wrong
+     * @returns {string}
+     */
     click(value) {
         console.log(value);
         if (value === this.state.color) {
@@ -162,14 +181,22 @@ class RageClick extends React.Component {
 
 
 }
-
+/**
+ * Method to convert state in props
+ * @param state
+ * @returns {{speedClick: ([]|*[]), name: *, jungleClick: ([]|*[]), rageColor: ([]|*[])}}
+ */
 const mapStateToProps = state => {
     return {
         rageColor: state.rageColor,
         name: state.name
     };
 };
-
+/**
+ * Method to dispatch states in the store
+ * @param dispatch
+ * @returns {{addJungle: addJungle, addRage: addRage, addSpeed: addSpeed}}
+ */
 const mapDispatchToProps = dispatch => {
     return {
         addRage: rageColor => {
@@ -177,7 +204,9 @@ const mapDispatchToProps = dispatch => {
         }
     };
 };
-
+/**
+ * Method to connect with store
+ */
 export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps

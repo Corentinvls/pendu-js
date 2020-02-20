@@ -1,5 +1,7 @@
 import React from 'react';
-
+/**
+ * Components where the devs are display
+ */
 export default class APropos extends React.Component {
     render() {
         return (
