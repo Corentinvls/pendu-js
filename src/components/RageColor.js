@@ -137,22 +137,22 @@ class RageClick extends React.Component {
                     <h2>score: {(this.state.score)}  timer: {(this.state.time)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
-                    <span className={btnClass}>look at me</span>
+                    <span id="look" className={btnClass} >look at me</span>
                     <div>
 
 
                         <button id="Vert" type="button" className={"Vert"} onClick={event => this.click("Vert")}
                                 value={"Vert"}
-                                disabled={!this.state.isOn}>Vert
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={"Jaune"} onClick={event => this.click("Jaune")} value={"Jaune"}
-                                disabled={!this.state.isOn}>Jaune
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={"Rouge"} onClick={event => this.click("Rouge")} value={"Rouge"}
-                                disabled={!this.state.isOn}>Rouge
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={"Bleu"} onClick={event => this.click("Bleu")} value={"Bleu"}
-                                disabled={!this.state.isOn}>Bleu
+                                disabled={!this.state.isOn}>
                         </button>
                     </div>
                 </header>

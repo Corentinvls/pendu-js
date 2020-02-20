@@ -127,19 +127,19 @@ class JungleClick extends React.Component {
                     <div>
                         <button type="button" className={button1} value={button1}
                                 onClick={event => this.click(button1, button2, button3, button4)}
-                                disabled={!this.state.isOn}>BLABLA
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={button2} value={button2}
                                 onClick={event => this.click(button2, button3, button4, button1)}
-                                disabled={!this.state.isOn}>BLABLA
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={button3} value={button3}
                                 onClick={event => this.click(button3, button2, button4, button1)}
-                                disabled={!this.state.isOn}>BLABLA
+                                disabled={!this.state.isOn}>
                         </button>
                         <button type="button" className={button4} value={button4}
                                 onClick={event => this.click(button4, button3, button2, button1)}
-                                disabled={!this.state.isOn}>BLABLA
+                                disabled={!this.state.isOn}>
                         </button>
                     </div>
                 </header>
