@@ -17,6 +17,12 @@ import APropos from './components/APropos';
 import JungleClick from "./components/JungleClick";
 import RageColor from "./components/RageColor";
 
+// import for background animation
+
+
+import ParticlesBg from "particles-bg";
+
+import './fonts/GoSpeeds.ttf'
 
 //const store = createStore(reducer);
 
@@ -34,10 +40,12 @@ export default class App extends React.Component {
     render() {
         return (
             // <Provider store={store}>
-
+            
             <Router>
                 <div>
+                    
                     <nav>
+                    <ParticlesBg color="ffffff" num={200}type="lines"  bg={true}/>
                         <ul id="nav">
                             <li className="navli">
                                 <Link to="/speedclick">Speed Click</Link>
@@ -74,9 +82,11 @@ export default class App extends React.Component {
                         </Route>
                     </Switch>
                 </div>
+
             </Router>
             // </Provider>
-
+            
         );
+        //render(<App />, document.getElementById("root")); 
     }
 }
