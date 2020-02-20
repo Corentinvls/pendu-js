@@ -34,42 +34,10 @@ class RageClick extends React.Component {
             itemsRef.push(item)
         }
 
-      componentDidMount() {
-       const itemsRef = firebase.database().ref('rageColor');
-       itemsRef.on('value', (snapshot) => {
-            let items = snapshot.val();
-            let newState = [];
-            for (let item in items) {
-                newState.push({
-                    name: items[item].name,
-                    score: items[item].score,
-                });
-            }
-            newState.sort((a, b) => {
-                if (a.score === -1) {
-                    return 1
-                } else if (b.score === -1) {
-                    return -1
-                } else if (a.score === b.score) {
-                    return 0;
-                } else {
-                    if (a.score < b.score) {
-                        return -1;
-                    } else {
-                        return 1;
-                    }
-                }
-            });
-            while (newState.length > 5) {
-                newState.pop();
-            }
-            this.props.addGame(newState);
-            this.setState({...this.state, rageColor: this.props.rageColor});
-        });
-    }
+
 
     sortScore() {
-            this.componentDidMount();
+
             let array = this.props.rageColor;
             console.log(array);
             array.push({
@@ -118,11 +86,11 @@ class RageClick extends React.Component {
 
 
     stopTimer() {
-        this.sortScore()
+        this.sortScore();
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
-        ;
+
     }
 
     randColor() {
@@ -168,7 +136,7 @@ class RageClick extends React.Component {
                     <h1 id="maintitle">Jungle Click</h1>
                     <h2>timer: {(this.state.time)}</h2>
                     <h2>score: {(this.state.score)}</h2>
-                    <button id="newgame" type="button" onClick={event => this.startTimer}>Nouvelle partie</button>
+                    <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <span className={btnClass}>look at me</span>
                     <div>
