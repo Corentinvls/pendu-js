@@ -38,7 +38,7 @@ export default class App extends React.Component {
                     <div>
 
                         <nav>
-                            <ParticlesBg color="ffffff" num={1000} type="lines" bg={true}/>
+                            <ParticlesBg color="ffffff" num={50} rps={0.5} type="color" bg={true}/>
                             <ul id="nav">
                                 <li className="navli">
                                     <Link to="/">Acceuil</Link>
