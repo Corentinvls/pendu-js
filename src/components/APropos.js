@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class APropos extends React.Component {
-    render () {
+    render() {
         return (
             <div>
                 <h2>Corentin Vallois</h2>

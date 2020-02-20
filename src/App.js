@@ -4,10 +4,10 @@ import {createStore} from 'redux';
 import reducer from './redux/reducers'
 import './App.css';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
 } from "react-router-dom";
 
 
@@ -18,66 +18,65 @@ import JungleClick from "./components/JungleClick";
 import RageColor from "./components/RageColor";
 
 
-
 //const store = createStore(reducer);
 
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      name: '',
-    };
-    //console.log('initial state', store.getState());
+        this.state = {
+            name: '',
+        };
+        //console.log('initial state', store.getState());
 
-  }
+    }
 
-  render() {
-    return (
-       // <Provider store={store}>
+    render() {
+        return (
+            // <Provider store={store}>
 
-          <Router>
-            <div>
-              <nav>
-                <ul id="nav">
-                  <li className="navli">
-                    <Link to="/speedclick">Speed Click</Link>
-                  </li>
-                  <li className="navli">
-                    <Link to="/jungleclick">Jungle Click</Link>
-                  </li>
-                  <li className="navli">
-                    <Link to="/ragecolor">Rage Color</Link>
-                  </li>
-                  <li className="navli">
-                    <Link to="/configuration">Configuration</Link>
-                  </li>
-                  <li className="navli">
-                    <Link to="/aPropos">A propos</Link>
-                  </li>
-                </ul>
-              </nav>
-              <Switch>
-                <Route exact path="/speedclick">
-                  <SpeedClick/>
-                </Route>
-                <Route exact path="/jungleclick">
-                  <JungleClick/>
-                </Route>
-                <Route exact path="/ragecolor">
-                  <RageColor/>
-                </Route>
-                <Route path="/configuration">
-                  <Configuration/>
-                </Route>
-                <Route path="/aPropos">
-                  <APropos/>
-                </Route>
-              </Switch>
-            </div>
-          </Router>
-       // </Provider>
+            <Router>
+                <div>
+                    <nav>
+                        <ul id="nav">
+                            <li className="navli">
+                                <Link to="/speedclick">Speed Click</Link>
+                            </li>
+                            <li className="navli">
+                                <Link to="/jungleclick">Jungle Click</Link>
+                            </li>
+                            <li className="navli">
+                                <Link to="/ragecolor">Rage Color</Link>
+                            </li>
+                            <li className="navli">
+                                <Link to="/configuration">Configuration</Link>
+                            </li>
+                            <li className="navli">
+                                <Link to="/aPropos">A propos</Link>
+                            </li>
+                        </ul>
+                    </nav>
+                    <Switch>
+                        <Route exact path="/speedclick">
+                            <SpeedClick/>
+                        </Route>
+                        <Route exact path="/jungleclick">
+                            <JungleClick/>
+                        </Route>
+                        <Route exact path="/ragecolor">
+                            <RageColor/>
+                        </Route>
+                        <Route path="/configuration">
+                            <Configuration/>
+                        </Route>
+                        <Route path="/aPropos">
+                            <APropos/>
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
+            // </Provider>
 
-    );
-  }
+        );
+    }
 }

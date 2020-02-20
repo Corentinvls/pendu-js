@@ -39,7 +39,8 @@
 
 
 {
-  background-color: #8c9bb4;
+    background-color: #8c9bb4
+;
 
 }
 #nav {
@@ -123,18 +124,23 @@ header {
     position: relative;
     top: 1px;
 }
-.Vert{
+
+.Vert {
     background: green;
 }
-.Jaune{
+
+.Jaune {
     background: yellow;
 }
-.Rouge{
+
+.Rouge {
     background: red;
 }
-.Bleu{
+
+.Bleu {
     background: dodgerblue;
 }
-.White{
+
+.White {
 
 }

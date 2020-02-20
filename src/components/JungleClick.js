@@ -11,7 +11,7 @@ export default class JungleClick extends React.Component {
             isOn: false,
             start: 0,
             score: 0,
-            color:"White"
+            color: "White"
         };
         this.startTimer = this.startTimer.bind(this);
         this.stopTimer = this.stopTimer.bind(this);
@@ -32,29 +32,30 @@ export default class JungleClick extends React.Component {
         this.timer = setInterval(() => this.setState({
             time: (Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
         }), 50);
-        this.timerColor = setInterval(() => this.setState({color : this.randColor()}), Math.floor(Math.random()*3000)+1000);
+        this.timerColor = setInterval(() => this.setState({color: this.randColor()}), Math.floor(Math.random() * 3000) + 1000);
     }
 
 
     stopTimer() {
-        this.setState({isOn: false,time: 0});
+        this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
     }
-    randColor(){
-        let couleur =["Vert","Jaune","Rouge","Bleu"];
-            let b = Math.floor(Math.random()*4);
-            return couleur[b];
+
+    randColor() {
+        let couleur = ["Vert", "Jaune", "Rouge", "Bleu"];
+        let b = Math.floor(Math.random() * 4);
+        return couleur[b];
     }
 
     click(value) {
         console.log("coucou");
         console.log(value);
-        if(value===this.state.color){
-        this.setState({
-            score: this.state.score + 1
-        });
-        }else{
+        if (value === this.state.color) {
+            this.setState({
+                score: this.state.score + 1
+            });
+        } else {
             this.stopTimer();
         }
     }
@@ -87,18 +88,23 @@ export default class JungleClick extends React.Component {
                     <h2>score: {(this.state.score)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
-                    <span className={btnClass} >look at me</span>
+                    <span className={btnClass}>look at me</span>
                     <div>
 
 
-                        <button id="Vert" type="button" className={"Vert"} onClick={event =>this.click("Vert")} value={"Vert"}
-                                disabled={!this.state.isOn}>Vert</button>
-                        <button type="button" className={"Jaune"} onClick={event =>this.click("Jaune")} value={"Jaune"}
-                                disabled={!this.state.isOn}>Jaune</button>
-                        <button type="button" className={"Rouge"} onClick={event =>this.click("Rouge")} value={"Rouge"}
-                                disabled={!this.state.isOn}>Rouge</button>
-                        <button type="button" className={"Bleu"} onClick={event =>this.click("Bleu")} value={"Bleu"}
-                                disabled={!this.state.isOn}>Bleu</button>
+                        <button id="Vert" type="button" className={"Vert"} onClick={event => this.click("Vert")}
+                                value={"Vert"}
+                                disabled={!this.state.isOn}>Vert
+                        </button>
+                        <button type="button" className={"Jaune"} onClick={event => this.click("Jaune")} value={"Jaune"}
+                                disabled={!this.state.isOn}>Jaune
+                        </button>
+                        <button type="button" className={"Rouge"} onClick={event => this.click("Rouge")} value={"Rouge"}
+                                disabled={!this.state.isOn}>Rouge
+                        </button>
+                        <button type="button" className={"Bleu"} onClick={event => this.click("Bleu")} value={"Bleu"}
+                                disabled={!this.state.isOn}>Bleu
+                        </button>
                     </div>
                 </header>
 
