@@ -19,8 +19,8 @@ class SpeedClick extends React.Component {
             score: 0,
             speedClick: []
         };
-        this.startTimer = this.startTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
+        this.startGame = this.startGame.bind(this);
+        this.stopGame = this.stopGame.bind(this);
         this.click = this.click.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -40,7 +40,7 @@ class SpeedClick extends React.Component {
     /**
      *  sort the array and add int the props and in the database and in the state
      */
-    sortScore() {
+    addScore() {
         let array = this.props.speedClick;
         console.log(array);
         array.push({
@@ -74,7 +74,7 @@ class SpeedClick extends React.Component {
     /**
      *  Start the timer
      */
-    startTimer() {
+    startGame() {
         clearInterval(this.timer);
         clearInterval(this.timerEnd);
         this.setState({
@@ -83,7 +83,7 @@ class SpeedClick extends React.Component {
             start: Date.now() - this.state.time,
             score: 0
         });
-        this.timerEnd = setInterval(() => this.setState(this.stopTimer()), 50);
+        this.timerEnd = setInterval(() => this.setState(this.stopGame()), 50);
         this.timer = setInterval(() => this.setState({
             time: (30 - Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
         }), 50);
@@ -92,10 +92,10 @@ class SpeedClick extends React.Component {
     /**
      *  Stop the timer
      */
-    stopTimer() {
+    stopGame() {
         if (this.state.time <= 0) {
             this.setState({isOn: false});
-            this.sortScore();
+            this.addScore();
             clearInterval(this.timer);
             clearInterval(this.timerEnd);
             this.setState({time: 30})
@@ -122,7 +122,7 @@ class SpeedClick extends React.Component {
                 <header>
                     <h1 id="maintitle">Speed Click</h1>
                     <h2>score: {(this.state.score)} timer: {(this.state.time)}</h2>
-                    <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
+                    <button id="newgame" type="button" onClick={this.startGame}>Nouvelle partie</button>
                     <hr/>
                     <div>
                         <button id="bour" type="button" className="bour" onClick={this.click}

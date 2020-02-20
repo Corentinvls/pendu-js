@@ -56,8 +56,11 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
 
+}
+a.navli{
+    color: black;
+}
 /* Change the link color to #111 (black) on hover */
 .navli:hover {
     background-color: #a6a6a6;
@@ -179,11 +182,6 @@ body li {
 
 }
 
-.navli a {
-
-    color: black;
-    text-decoration: none;
-}
 
 #look,#conf {
     font-size: 80px;

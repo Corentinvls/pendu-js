@@ -46,23 +46,23 @@ export default class App extends React.Component {
                         <nav>
                             <ParticlesBg color="ffffff" num={50} rps={0.5} type="color" bg={true}/>
                             <ul id="nav">
-                                <li className="navli">
-                                    <Link to="/">Acceuil</Link>
+                                <li >
+                                    <Link className="navli" to="/">Acceuil</Link>
                                 </li>
-                                <li className="navli">
-                                    <Link to="/speedclick">Speed Click</Link>
+                                <li >
+                                    <Link className="navli"to="/speedclick">Speed Click</Link>
                                 </li>
-                                <li className="navli">
-                                    <Link to="/jungleclick">Jungle Click</Link>
+                                <li >
+                                    <Link className="navli" to="/jungleclick">Jungle Click</Link>
                                 </li>
-                                <li className="navli">
-                                    <Link to="/ragecolor">Rage Color</Link>
+                                <li >
+                                    <Link className="navli" to="/ragecolor">Rage Color</Link>
                                 </li>
-                                <li className="navli">
-                                    <Link to="/configuration">Configuration</Link>
+                                <li>
+                                    <Link className="navli" to="/configuration">Configuration</Link>
                                 </li>
-                                <li className="navli">
-                                    <Link to="/aPropos">A propos</Link>
+                                <li>
+                                    <Link className="navli" to="/aPropos">A propos</Link>
                                 </li>
                             </ul>
                         </nav>

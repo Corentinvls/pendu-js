@@ -20,8 +20,8 @@ class JungleClick extends React.Component {
             score: 0,
             jungleClick: []
         };
-        this.startTimer = this.startTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
+        this.startGame = this.startGame.bind(this);
+        this.stopGame = this.stopGame.bind(this);
         this.click = this.click.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -41,7 +41,7 @@ class JungleClick extends React.Component {
     /**
      * Method to add the score in the store and sort them
      */
-    sortScore() {
+    addScore() {
         // copy the props in an array and add the new score
         let array = this.props.jungleClick;
         array.push({
@@ -77,9 +77,9 @@ class JungleClick extends React.Component {
     /**
      * Method to start the game
      */
-    startTimer() {
+    startGame() {
 
-        this.stopTimer();
+        this.stopGame();
         this.setState({
             isOn: true,
             time: this.state.time,
@@ -98,9 +98,9 @@ class JungleClick extends React.Component {
     /**
      * Method to stop the game
      */
-    stopTimer() {
+    stopGame() {
         if (this.state.isOn) {
-            this.sortScore();
+            this.addScore();
         }
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
@@ -133,7 +133,7 @@ class JungleClick extends React.Component {
             });
 
         } else {
-            this.stopTimer();
+            this.stopGame();
         }
 
     }
@@ -151,7 +151,7 @@ class JungleClick extends React.Component {
                 <header>
                     <h1 id="maintitle">Jungle Click</h1>
                     <h2>score: {(this.state.score)}</h2>
-                    <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
+                    <button id="newgame" type="button" onClick={this.startGame}>Nouvelle partie</button>
                     <hr/>
                     <div>
                         <button type="button" className={button1} value={button1}

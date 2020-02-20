@@ -21,8 +21,8 @@ class RageClick extends React.Component {
             color: "White",
             rageColor: []
         };
-        this.startTimer = this.startTimer.bind(this);
-        this.stopTimer = this.stopTimer.bind(this);
+        this.startGame = this.startGame.bind(this);
+        this.stopGame = this.stopGame.bind(this);
         this.click = this.click.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -42,7 +42,7 @@ class RageClick extends React.Component {
     /**
      * Method to add the score in the store and sort them
      */
-    sortScore() {
+    addScore() {
 // copy the props in an array and add the new score
         let array = this.props.rageColor;
         console.log(array);
@@ -78,8 +78,8 @@ class RageClick extends React.Component {
     /**
      * Method to start the game
      */
-    startTimer() {
-        this.stopTimer();
+    startGame() {
+        this.stopGame();
         this.setState({
             isOn: true,
             time: this.state.time,
@@ -97,8 +97,8 @@ class RageClick extends React.Component {
     /**
      * Method to stop the game
      */
-    stopTimer() {
-        this.sortScore();
+    stopGame() {
+        this.addScore();
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
@@ -124,7 +124,7 @@ class RageClick extends React.Component {
                 score: this.state.score + 1
             });
         } else {
-            this.stopTimer();
+            this.stopGame();
         }
     }
     /**
@@ -156,7 +156,7 @@ class RageClick extends React.Component {
                 <header>
                     <h1 id="maintitle">Rage Color</h1>
                     <h2>score: {(this.state.score)} timer: {(this.state.time)}</h2>
-                    <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
+                    <button id="newgame" type="button" onClick={this.startGame}>Nouvelle partie</button>
                     <hr/>
                     <span id="look" className={btnClass}>look at me</span>
                     <div>
