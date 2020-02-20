@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
-import {addGame} from "../redux/actions";
+import {addRage} from "../redux/actions";
 
 class RageClick extends React.Component {
 
@@ -63,7 +63,7 @@ class RageClick extends React.Component {
             if (array.length > 5) {
                 array.pop();
             }
-            this.props.addGame(array);
+            this.props.addRage(array);
             this.handleSubmit();
             this.setState({...this.state, rageColor: this.props.rageColor});
         }
@@ -172,8 +172,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addGame: rageColor => {
-            dispatch(addGame(rageColor))
+        addRage: rageColor => {
+            dispatch(addRage(rageColor))
         }
     };
 };

@@ -3,7 +3,7 @@ import {withRouter} from 'react-router-dom';
 //import firebase from '../firebase.js';
 
 import {connect} from "react-redux";
-import {addGame} from "../redux/actions";
+import {addRage} from "../redux/actions";
 import firebase from "../firebase";
 
  class Accueil extends React.Component {
@@ -44,7 +44,7 @@ import firebase from "../firebase";
              while (newState.length > 5) {
                  newState.pop();
              }
-             this.props.addGame(newState);
+             this.props.addRage(newState);
              this.setState({...this.state, rageColor: this.props.rageColor});
          });
      }
@@ -82,8 +82,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addGame: rageColor => {
-            dispatch(addGame(rageColor))
+        addRage: rageColor => {
+            dispatch(addRage(rageColor))
         }
     };
 };

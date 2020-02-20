@@ -1,6 +1,7 @@
 import {
     SET_NAME,
-    ADD_GAME,
+    ADD_RAGE,
+    ADD_JUNGLE,
 } from './actions'
 
 
@@ -13,7 +14,8 @@ const initialState = {
      * @param      {Number}  {score}
      */
     name:'',
-    rageColor: []
+    rageColor: [],
+    jungleClick: []
 };
 
 
@@ -23,10 +25,12 @@ export default function reducer(state = initialState, action) {
     console.log(state);
     switch (action.type) {
 
-        case ADD_GAME:
+        case ADD_RAGE:
             return {...state, rageColor: action.rageColor};
         case SET_NAME:
             return {...state, name: action.name};
+        case ADD_JUNGLE:
+            return {...state, jungleClick: action.jungleClick};
         default :
             return state;
     }
