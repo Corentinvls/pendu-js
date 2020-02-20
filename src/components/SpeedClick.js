@@ -19,6 +19,8 @@ export default class SpeedClick extends React.Component {
     }
 
     startTimer() {
+        clearInterval(this.timer);
+        clearInterval(this.timerEnd);
         this.setState({
             isOn: true,
             time: this.state.time,
@@ -53,56 +55,19 @@ export default class SpeedClick extends React.Component {
             <div>
                 <header>
                     <h1 id="maintitle">Speed Click</h1>
-                    <h2>timer: {(this.state.time)}</h2>
-                    <h2>score: {(this.state.score)}</h2>
+                    <h2>score: {(this.state.score)}  timer: {(this.state.time)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <div>
                         <button id="bour" type="button" className="bour" onClick={this.click}
-                                disabled={!this.state.isOn}>Bourrine
-                            moi
+                                disabled={!this.state.isOn} unselectable={true}>
+                            Bourrine moi
                         </button>
                     </div>
                 </header>
-
             </div>
         )
     }
-
-
 }
 
-
-/*<button onClick={this.startTimer}>start</button>
-                    <button onClick={this.stopTimer}>stop</button>
-                    <button onClick={this.resetTimer}>reset</button>
-const ms = require('pretty-ms')
-class Timer extends React.Component {
-    constructor(props){
-        super(props)
-        this.state
-    render() {
-        let start = (this.state.time == 0) ?
-            <button onClick={this.startTimer}>start</button> :
-            null
-        let stop = (this.state.time == 0 || !this.state.isOn) ?
-            null :
-            <button onClick={this.stopTimer}>stop</button>
-        let resume = (this.state.time == 0 || this.state.isOn) ?
-            null :
-            <button onClick={this.startTimer}>resume</button>
-        let reset = (this.state.time == 0 || this.state.isOn) ?
-            null :
-            <button onClick={this.resetTimer}>reset</button>
-        return(
-            <div>
-                <h3>timer: {ms(this.state.time)}</h3>
-                {start}
-                {resume}
-                {stop}
-                {reset}
-            </div>
-        )
-    }
-}*/
 

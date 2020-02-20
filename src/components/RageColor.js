@@ -84,8 +84,7 @@ export default class JungleClick extends React.Component {
             <div>
                 <header>
                     <h1 id="maintitle">Rage Color</h1>
-                    <h2>timer: {(this.state.time)}</h2>
-                    <h2>score: {(this.state.score)}</h2>
+                    <h2>score: {(this.state.score)}  timer: {(this.state.time)}</h2>
                     <button id="newgame" type="button" onClick={this.startTimer}>Nouvelle partie</button>
                     <hr/>
                     <span className={btnClass}>look at me</span>

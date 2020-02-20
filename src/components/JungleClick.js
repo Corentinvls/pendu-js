@@ -44,7 +44,6 @@ export default class JungleClick extends React.Component {
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
-        clearInterval(this.deadTimer);
     }
 
     randColor() {
@@ -57,13 +56,10 @@ export default class JungleClick extends React.Component {
         if (value1 === value2 || value1 === value3 || value1 === value4) {
 
             clearInterval(this.timer);
-            clearInterval(this.deadTimer);
-            let time = Math.floor(Math.random() * 500) + 750;
-            this.deadTimer = setInterval(() => this.stopTimer(), time);
 
             this.timer = setInterval(() => this.setState({
                 time: (Math.round((Date.now() - this.state.start) / 100) / 10).toFixed(1)
-            }), time);
+            }), Math.floor(Math.random() * 500) + 750);
 
             this.setState({
                 score: this.state.score + 1
