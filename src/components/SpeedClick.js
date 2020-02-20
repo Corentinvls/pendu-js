@@ -14,7 +14,6 @@ class SpeedClick extends React.Component {
             isOn: false,
             start: 0,
             score: 0,
-            avg: 0,
             speedClick: []
         };
         this.startTimer = this.startTimer.bind(this);
@@ -28,7 +27,6 @@ class SpeedClick extends React.Component {
         const item = {
             name: this.props.name,
             score: this.state.score,
-            avg: this.state.avg
         };
         itemsRef.push(item)
     }
@@ -39,8 +37,7 @@ class SpeedClick extends React.Component {
         console.log(array);
         array.push({
             name: this.props.name,
-            score: this.props.score,
-            avg: this.props.avg
+            score: this.props.score
         });
 
         array.sort((a, b) => {
@@ -85,7 +82,6 @@ class SpeedClick extends React.Component {
     stopTimer() {
         if (this.state.time <= 0) {
             this.setState({isOn: false});
-            this.setState({avg: this.state.score / 30});
             this.sortScore();
             clearInterval(this.timer);
             clearInterval(this.timerEnd);
@@ -123,7 +119,6 @@ class SpeedClick extends React.Component {
 const mapStateToProps = state => {
     return {
         speedClick: state.speedClick,
-        avg: state.avg,
         name: state.name
     };
 };
