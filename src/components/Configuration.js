@@ -28,11 +28,12 @@ class Configuration extends React.Component {
 
 
         return (
-            <div>
+            <div id="conf">
                 <h2>Entrez votre nom</h2>
                 <form onSubmit={event => this.setName(event)}>
                     <input type="text" placeholder={name}/>
-                    <button>Envoyer</button>
+                <br></br>
+                    <button id="send">Envoyer</button>
                 </form>
             </div>
         );
