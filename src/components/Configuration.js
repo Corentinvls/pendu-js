@@ -29,8 +29,8 @@ class Configuration extends React.Component {
     }
 
     /**
-     * display the DOM virtual
-     * return the DOM
+     *  Display the virtual DOM
+     *  @return the virtual DOM
      */
     render() {
         const {name} = this.props;

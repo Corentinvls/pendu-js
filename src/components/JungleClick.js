@@ -137,7 +137,10 @@ class JungleClick extends React.Component {
         }
 
     }
-
+    /**
+     *  Display the virtual DOM
+     *  @return the virtual DOM
+     */
     render() {
         var button1 = this.randColor();
         let button2 = this.randColor();

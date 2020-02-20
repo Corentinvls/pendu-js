@@ -34,8 +34,8 @@ export default class App extends React.Component {
 
 
     /**
-     * display the DOM virtual
-     * return the DOM
+     *  Display the virtual DOM
+     *  @return the virtual DOM
      */
     render() {
         return (

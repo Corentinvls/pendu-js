@@ -127,7 +127,10 @@ class RageClick extends React.Component {
             this.stopTimer();
         }
     }
-
+    /**
+     *  Display the virtual DOM
+     *  @return the virtual DOM
+     */
     render() {
         let btnClass;
         switch (this.state.color) {

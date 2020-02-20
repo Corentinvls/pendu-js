@@ -123,8 +123,8 @@ class Accueil extends React.Component {
     }
 
     /**
-     * Method to display the component
-     * @returns {*}
+     *  Display the virtual DOM
+     *  @return the virtual DOM
      */
     render() {
         const {rageColor} = this.props;
