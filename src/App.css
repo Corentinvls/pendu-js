@@ -221,11 +221,15 @@ button:disabled {
     display: flex;
     align-content: center;
     justify-content: space-around;
+    transition-duration:100ms ;
+
 }
 
 #aproposdiv h2:hover {
-    color: red;
+    transform: scale(1.4);
+color: #ce0100;
 }
+
 
 #scorePanel {
     background-color: darkgrey;
