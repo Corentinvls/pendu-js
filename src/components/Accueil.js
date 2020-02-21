@@ -23,10 +23,28 @@ class Accueil extends React.Component {
      */
     componentDidMount() {
         // read the score of Rage color
-        const itemsRef = firebase.database().ref('rageColor');
+
+        this.props.addRage(this.catchSort("rageColor"));
+        this.setState({...this.state, rageColor: this.props.rageColor});
+
+        // read the score of Jungle Click
+
+        this.props.addJungle(this.catchSort("jungleClick"));
+        this.setState({...this.state, jungleClick: this.props.jungleClick});
+
+        // read the score of Speed Click
+
+        this.props.addSpeed(this.catchSort("speedClick"));
+        this.setState({...this.state, speedClick: this.props.speedClick});
+        console.log("props", this.state)
+    }
+
+    catchSort(table) {
+        console.log(table)
+        var itemsRef = firebase.database().ref(table);
         itemsRef.on('value', (snapshot) => {
             let items = snapshot.val();
-            let newState = [];
+            var newState = [];
             for (let item in items) {
                 newState.push({
                     name: items[item].name,
@@ -51,83 +69,18 @@ class Accueil extends React.Component {
             while (newState.length > 5) {
                 newState.pop();
             }
-            this.props.addRage(newState);
-            this.setState({...this.state, rageColor: this.props.rageColor});
-
-            // read the score of Jungle Click
-            const itemsRefjun = firebase.database().ref('jungleClick');
-            itemsRefjun.on('value', (snapshot) => {
-                let items = snapshot.val();
-                let newState = [];
-                for (let item in items) {
-                    newState.push({
-                        name: items[item].name,
-                        score: items[item].score,
-                    });
-                }
-                newState.sort((a, b) => {
-                    if (a.score === -1) {
-                        return 1
-                    } else if (b.score === -1) {
-                        return -1
-                    } else if (a.score === b.score) {
-                        return 0;
-                    } else {
-                        if (a.score > b.score) {
-                            return -1;
-                        } else {
-                            return 1;
-                        }
-                    }
-                });
-                while (newState.length > 5) {
-                    newState.pop();
-                }
-                this.props.addJungle(newState);
-                this.setState({...this.state, jungleClick: this.props.jungleClick});
-
-                // read the score of Speed Click
-                const itemsSpeed = firebase.database().ref('speedClick');
-                itemsSpeed.on('value', (snapshot) => {
-                    let items = snapshot.val();
-                    let newState = [];
-                    for (let item in items) {
-                        newState.push({
-                            name: items[item].name,
-                            score: items[item].score,
-                        });
-                    }
-                    newState.sort((a, b) => {
-                        if (a.score === -1) {
-                            return 1
-                        } else if (b.score === -1) {
-                            return -1
-                        } else if (a.score === b.score) {
-                            return 0;
-                        } else {
-                            if (a.score > b.score) {
-                                return -1;
-                            } else {
-                                return 1;
-                            }
-                        }
-                    });
-                    while (newState.length > 5) {
-                        newState.pop();
-                    }
-                    this.props.addSpeed(newState);
-                    this.setState({...this.state, speedClick: this.props.speedClick});
-                });
-            });
+            console.log("state",newState);
+            return newState;
         });
-    }
+        }
+
 
     /**
      *  Display the virtual DOM
      *  @return the virtual DOM
      */
     render() {
-        const {rageColor} = this.props;
+
         return (
             <div id="scorePanel">
                 <div>
@@ -140,7 +93,7 @@ class Accueil extends React.Component {
                         </tr>
                         </thead>
                         <tbody>
-                        {rageColor.map((rageColorIndex, index) => (
+                        {this.props.rageColor.map((rageColorIndex, index) => (
                             <tr key={index}>
                                 <td>{rageColorIndex.name}</td>
                                 <td>{rageColorIndex.score}</td>
