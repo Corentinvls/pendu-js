@@ -232,8 +232,17 @@ color: #ce0100;
 
 
 #scorePanel {
-    background-color: darkgrey;
+
     display: flex;
     align-items: stretch;
     justify-content: space-around;
+}
+table{
+    background-color: #cdcdcd;
+}
+thead{
+    background-color: #bbbbbb;
+}
+tbody{
+    background-color: #a6a6a6;
 }

@@ -98,7 +98,7 @@ class RageClick extends React.Component {
      * Method to stop the game
      */
     stopGame() {
-        this.addScore();
+
         this.setState({isOn: false, time: 0});
         clearInterval(this.timer);
         clearInterval(this.timerColor);
@@ -124,6 +124,7 @@ class RageClick extends React.Component {
                 score: this.state.score + 1
             });
         } else {
+            this.addScore();
             this.stopGame();
         }
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from "react-redux";
-import {addRage, addJungle, addSpeed} from "../redux/actions";
+import {addRage, addJungle, addSpeed, setName} from "../redux/actions";
 import firebase from "../firebase";
 
 /**
@@ -11,6 +11,7 @@ class Accueil extends React.Component {
     constructor() {
         super();
         this.state = {
+            name: '',
             score: 0,
             rageColor: [],
             jungleClick: [],
@@ -122,6 +123,15 @@ class Accueil extends React.Component {
         });
     }
 
+    setName(event) {
+        event.preventDefault();
+        let target = event.target;
+
+        this.props.setName(
+            target[0].value
+        );
+    }
+
     /**
      *  Display the virtual DOM
      *  @return the virtual DOM
@@ -129,60 +139,71 @@ class Accueil extends React.Component {
     render() {
         const {rageColor} = this.props;
         return (
-            <div id="scorePanel">
-                <div>
-                    <h2> Score Rage Color </h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Score</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {rageColor.map((rageColorIndex, index) => (
-                            <tr key={index}>
-                                <td>{rageColorIndex.name}</td>
-                                <td>{rageColorIndex.score}</td>
-                            </tr>))}
-                        </tbody>
-                    </table>
+            <div>
+
+                <div id="scorePanel">
+                    <div>
+                        <h2> Score Rage Color </h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Score</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {rageColor.map((rageColorIndex, index) => (
+                                <tr key={index}>
+                                    <td>{rageColorIndex.name}</td>
+                                    <td>{rageColorIndex.score}</td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2> Score Jungle Click </h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Score</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.props.jungleClick.map((jungleClickIndex, index) => (
+                                <tr key={index}>
+                                    <td>{jungleClickIndex.name}</td>
+                                    <td>{jungleClickIndex.score}</td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h2> Score speedClick</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Score</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {this.props.speedClick.map((speedClickIndex, index) => (
+                                <tr key={index}>
+                                    <td>{speedClickIndex.name}</td>
+                                    <td>{speedClickIndex.score}</td>
+                                </tr>))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div>
-                    <h2> Score Jungle Click </h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Score</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.props.jungleClick.map((jungleClickIndex, index) => (
-                            <tr key={index}>
-                                <td>{jungleClickIndex.name}</td>
-                                <td>{jungleClickIndex.score}</td>
-                            </tr>))}
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <h2> Score speedClick</h2>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Score</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {this.props.speedClick.map((speedClickIndex, index) => (
-                            <tr key={index}>
-                                <td>{speedClickIndex.name}</td>
-                                <td>{speedClickIndex.score}</td>
-                            </tr>))}
-                        </tbody>
-                    </table>
+                <div id="conf">
+                    <h2>Entrez votre nom</h2>
+                    <form onSubmit={event => this.setName(event)}>
+                        <input type="text" placeholder={this.props.name}/>
+                        <br></br>
+                        <button id="send">Envoyer</button>
+                    </form>
                 </div>
             </div>
         );
@@ -217,6 +238,9 @@ const mapDispatchToProps = dispatch => {
         },
         addSpeed: speedClick => {
             dispatch(addSpeed(speedClick))
+        },
+        setName: name => {
+            dispatch(setName(name))
         }
     };
 };
